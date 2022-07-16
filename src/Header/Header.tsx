@@ -2,13 +2,10 @@ import './Header.scss';
 
 const Header = () =>{
     return(
-        <div id="home" className='header-block'>
+        <div className='header-block'>
             <div className='header-navigation'>
                 <img className='small-logo' src="./small-logo.png" alt=""/>
                 <div className='menu'>
-                    <div className='menu-item'>
-                        <a href="#home">HOME</a>
-                    </div>
                     <div className='menu-item'>
                         <a href="#about">ABOUT US</a>
                     </div>
