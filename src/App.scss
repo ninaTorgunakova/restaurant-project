@@ -1,4 +1,10 @@
 .App {
   display: flex;
   flex-direction: column;
+  gap: 1.5em;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("../public/fonts/montserrat.ttf");
 }

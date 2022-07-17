@@ -1,13 +1,13 @@
 import './Header.scss';
 
-const Header = () =>{
-    return(
+const Header = () => {
+    return (
         <div className='header-block'>
             <div className='header-navigation'>
                 <img className='small-logo' src="./small-logo.png" alt=""/>
                 <div className='menu'>
                     <div className='menu-item'>
-                        <a href="#about">ABOUT US</a>
+                        <a href="#about">ABOUT</a>
                     </div>
                     <div className='menu-item'>
                         <a href="#menu">MENU</a>
@@ -19,7 +19,7 @@ const Header = () =>{
                         <a href="#gallery">GALLERY</a>
                     </div>
                     <div className='menu-item'>
-                        <a href="#contact">CONTACT</a>
+                        <a href="#contact">CONTACTS</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ const Header = () =>{
                 <span><b>Weekends:</b> 9 A.M. — 5 P.M.</span>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Header
