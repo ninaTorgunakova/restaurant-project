@@ -1,0 +1,28 @@
+.slick-dots li button {
+  content: '';
+  color: white;
+  opacity: 0;
+}
+
+.slick-dots ul li {
+  position: inherit;
+  width: 1%;
+  height: 1%;
+  border: 1px solid black;
+  color: white;
+}
+
+li.slick-active {
+  background-color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .slick-dots.slick-thumb {
+    bottom: -20%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slick-dots.slick-thumb {
+    bottom: -65%;
+  }
+}

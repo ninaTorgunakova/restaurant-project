@@ -1,0 +1,21 @@
+.next-arrow {
+  width: 2% !important;
+  height: 8% !important;
+}
+
+.prev-arrow {
+  width: 2% !important;
+  height: 8% !important;
+  margin-left: -2%;
+}
+
+@media screen and (max-width: 300px) {
+  .prev-arrow {
+    margin-left: 8%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .prev-arrow {
+    margin-left: 1%;
+  }
+}
