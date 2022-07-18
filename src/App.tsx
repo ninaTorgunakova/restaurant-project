@@ -2,21 +2,21 @@ import './App.scss';
 import Header from './Header/Header';
 import About from './About/About';
 // import Menu from './Menu/Menu'
-// import MenuDishes from "./MenuDishes/MenuDishes";
-// import Reservation from "./Reservation/Reservation";
-// import Gallery from "./Gallery/Gallery";
-// import Contact from './Contact/Contact'
+// import MenuDishes from './MenuDishes/MenuDishes';
+// import Reservation from './Reservation/Reservation';
+// import Gallery from './Gallery/Gallery';
+import Contacts from './Contacts/Contacts';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Header/>
       <About/>
-      {/* <Menu/> */}
-      {/* <MenuDishes/>
+      {/* <Menu/>
+      <MenuDishes/>
       <Reservation/>
-      <Gallery/>
-      <Contact/> */}
+      <Gallery/> */}
+      <Contacts/>
     </div>
   );
 }

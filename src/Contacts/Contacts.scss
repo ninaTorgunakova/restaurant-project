@@ -1,0 +1,46 @@
+
+.contacts-block {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  background: url("../../public/contacts-background.png") no-repeat;
+  background-size: cover;
+  & .info {
+    display: flex;
+    gap: 60px;
+    margin-top: 8%;
+    @media screen and (max-width: 670px) {
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+      margin-top: 5%;
+    }
+    & .item {
+      font-weight: 500;
+      font-size: 1.3em;
+      @media screen and (max-width: 1000px) {
+        font-size: 1em;
+      }
+    }
+  }
+  & .links {
+    display: flex;
+    gap: 40px;
+    margin-top: 2%;
+    @media screen and (max-width: 670px) {
+      margin-top: 20px;
+    }
+  }
+  & .copyright {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    @media screen and (max-width: 670px) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 350px) {
+      font-size: 0.9em;
+    }
+  }
+}

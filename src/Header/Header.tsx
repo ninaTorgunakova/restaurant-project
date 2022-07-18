@@ -3,31 +3,31 @@ import './Header.scss';
 const Header = () => {
     return (
         <div className='header-block'>
-            <div className='header-navigation'>
-                <img className='small-logo' src="./small-logo.png" alt=""/>
+            <div className='navigation'>
+                <img className='small-logo' src='./small-logo.png' alt=''/>
                 <div className='menu'>
                     <div className='menu-item'>
-                        <a href="#about">ABOUT</a>
+                        <a href='#about'>ABOUT</a>
                     </div>
                     <div className='menu-item'>
-                        <a href="#menu">MENU</a>
+                        <a href='#menu'>MENU</a>
                     </div>
                     <div className='menu-item'>
-                        <a href="#reservations">RESERVATIONS</a>
+                        <a href='#reservations'>RESERVATIONS</a>
                     </div>
                     <div className='menu-item'>
-                        <a href="#gallery">GALLERY</a>
+                        <a href='#gallery'>GALLERY</a>
                     </div>
                     <div className='menu-item'>
-                        <a href="#contact">CONTACTS</a>
+                        <a href='#contacts'>CONTACTS</a>
                     </div>
                 </div>
             </div>
-            <div className='header-main-part'>
-                <img className='logo' src="./logo.png" alt=""/>
+            <div className='main-part'>
+                <img className='logo' src='./logo.png' alt=''/>
                 <span className='moto'>YOUR FAVORITE RESTAURANT</span>
             </div>
-            <div className='header-working-hours'>
+            <div className='working-hours'>
                 <span><b>Monday — Friday:</b> 8 A.M. — 11 P.M.</span>
                 <span><b>Weekends:</b> 9 A.M. — 5 P.M.</span>
             </div>
@@ -35,4 +35,4 @@ const Header = () => {
     );
 };
 
-export default Header
+export default Header;
