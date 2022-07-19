@@ -39,7 +39,7 @@ const Carousel = () => {
     prevArrow: <PrevArrow/>,
     appendDots: (dots: any) => (<div><ul className='dotsBlock'> {dots} </ul></div>),
     responsive: [{
-      breakpoint: 1200,
+      breakpoint: 1300,
       settings: {
         slidesToShow: 1,
         rows: 1
