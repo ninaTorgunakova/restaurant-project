@@ -3,7 +3,7 @@ import Header from './Header/Header';
 import About from './About/About';
 import Menu from './Menu/Menu';
 import Reservation from './Reservation/Reservation';
-// import Gallery from './Gallery/Gallery';
+import Gallery from './Gallery/Gallery';
 import Contacts from './Contacts/Contacts';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <About/>
       <Menu/>
       <Reservation/>
-      {/* <Gallery/> */}
+      <Gallery/>
       <Contacts/>
     </div>
   );

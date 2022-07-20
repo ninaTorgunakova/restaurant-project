@@ -8,3 +8,30 @@
   font-family: Montserrat;
   src: url("../public/fonts/montserrat.ttf");
 }
+
+.next-arrow {
+  height: 8% !important;
+  object-fit: contain;
+}
+
+.prev-arrow {
+  height: 8% !important;
+  margin-left: -2%;
+  object-fit: contain;
+  @media screen and (max-width: 300px) {
+    margin-left: 1%;
+  }
+  @media screen and (max-width: 300px) {
+    margin-left: 8%;
+  }
+}
+
+li.slick-active {
+  background-color: black;
+}
+
+.slick-dots li button {
+  content: '';
+  color: white;
+  opacity: 0;
+}

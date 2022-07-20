@@ -1,26 +1,12 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import classnames from 'classnames'
 
-import './Carousel.scss';
-import './CarouselMenu.css'
+import './Carousel.scss'
 import { DISHES } from '../Dish/DISHES';
 import Dish from '../Dish/Dish';
+import { NextArrow, PrevArrow } from '../../arrows';
 
-function NextArrow(props: any) {
-  const { className, onClick } = props;
-  return (
-    <img src='./right-arrow.png' alt='' onClick={onClick} className={classnames('next-arrow', className)}/>
-  );
-}
-
-function PrevArrow(props: any) {
-  const { className, onClick } = props;
-  return (
-    <img src='./left-arrow.png' alt='' onClick={onClick} className={classnames('prev-arrow', className)}/>
-  );
-}
 
 const Carousel = () => {
   const settings = {
