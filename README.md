@@ -2,7 +2,7 @@
 
 This project is about the beautiful place you can not only taste delicious dishes, but also enjoy a truly impressive atmosphere. Welcome!
 
-To view restaurants'site: https://restaurant-project-theta.vercel.app/
+To view landing page: https://restaurant-project-theta.vercel.app/
 
 ## Preview
 
