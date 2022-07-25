@@ -1,4 +1,4 @@
-import { IDish } from "./DISHES";
+import { IDish } from './DISHES';
 import './Dish.scss';
 
 const Dish = (props: IDish) => {

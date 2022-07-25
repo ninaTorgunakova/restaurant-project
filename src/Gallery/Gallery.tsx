@@ -35,7 +35,7 @@ const Gallery = () => {
       }]
     };
     return (
-      <div className='gallery-block'>
+      <div id='gallery' className='gallery-block'>
         <Slider {...settings} className='gallery'>
           {PHOTOS.map(photo => 
             <div className='photo' key={photo.id}><img src={photo.path} alt=''/></div>

@@ -2,7 +2,7 @@ import './Contacts.scss';
 
 const Contacts = () => {
   return (
-    <div id='contact' className='contacts-block'>
+    <div id='contacts' className='contacts-block'>
         <div className='info'>
             <span className='item'>9 West Street, New York, NY 10128</span>
             <span className='item'>(202) 123-4567</span>
