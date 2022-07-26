@@ -5,7 +5,8 @@
   justify-content: center;
   background: url("../../public/reservation-background.png") no-repeat;
   background-size: cover;
-  & .photo{
+  & .photo {
+    user-select: none;
     height: 440px;
     @media screen and (max-width: 1200px) {
       display: none;
@@ -90,10 +91,8 @@
   height: 35px;
   @media screen and (max-width: 600px) {
     width: 150px;
-    height: 25px;
   }
   @media screen and (max-width: 400px) {
     width: 100px;
-    height: 25px;
   }
 }

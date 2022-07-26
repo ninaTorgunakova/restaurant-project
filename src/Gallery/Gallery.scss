@@ -1,26 +1,36 @@
-.slick-dots ul li {
-  position: inherit;
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
-  color: white;
-}
-
 .gallery-block {
-  width: 77%;
-  & .gallery {
-    margin-left: 30%;
+  width: 80%;
+  margin: auto;
+}
+
+.swiper {
+  height: 100%;
+}
+
+.slide-photo {
+  width: 35vw;
+  user-select: none;
+  border-radius: 5px;
+  @media screen and (max-width: 1024px) {
+    width: 50vw;
+  }
+  @media screen and (max-width: 650px) {
+    width: 68vw;
   }
 }
 
-.photo {
-  & img {
-    object-fit: contain;
-    width: 300px;
-    height: 300px;
-    @media screen and (max-width: 1150px) and (min-width: 700px) {
-      width: 190px;
-      height: 190px;
-    }
-  }
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: black;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  user-select: none;
 }

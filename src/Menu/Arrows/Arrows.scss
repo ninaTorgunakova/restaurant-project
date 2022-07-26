@@ -1,0 +1,16 @@
+.next-arrow {
+  height: 8% !important;
+  object-fit: contain;
+}
+
+.prev-arrow {
+  height: 8% !important;
+  margin-left: -2%;
+  object-fit: contain;
+  @media screen and (max-width: 300px) {
+    margin-left: 1%;
+  }
+  @media screen and (max-width: 300px) {
+    margin-left: 8%;
+  }
+}

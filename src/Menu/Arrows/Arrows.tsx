@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import './Arrows.scss';
 
 export function NextArrow(props: any) {
   const { className, onClick } = props;

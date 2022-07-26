@@ -1,4 +1,4 @@
-import CarouselComponent from './Carousel/Carousel';
+import CarouselComponent from './Carousel';
 import './Menu.scss';
 
 const Menu = () => {

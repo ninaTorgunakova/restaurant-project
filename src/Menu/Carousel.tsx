@@ -2,10 +2,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-import './Carousel.scss'
-import { DISHES } from '../Dish/DISHES';
-import Dish from '../Dish/Dish';
-import { NextArrow, PrevArrow } from '../../arrows';
+import { DISHES } from './Dish/DISHES';
+import Dish from './Dish/Dish';
+import { NextArrow, PrevArrow } from './Arrows/Arrows';
 
 
 const Carousel = () => {
