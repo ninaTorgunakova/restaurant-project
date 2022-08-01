@@ -1,13 +1,24 @@
+import { createRef, RefObject, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-import { DISHES } from './Dish/DISHES';
+import { DISHES, DishType } from './Dish/DISHES';
 import Dish from './Dish/Dish';
 import { NextArrow, PrevArrow } from './Arrows/Arrows';
 
 
-const Carousel = () => {
+const Carousel = (props: {curType: DishType}) => {
+  const sliderRef: RefObject<Slider> = createRef();
+  useEffect(() => {
+    for (let i = 0; i < DISHES.length; i++) {
+      if (props.curType === DISHES[i].type && sliderRef.current) {
+        console.log(DISHES[i])
+        sliderRef.current.slickGoTo(i);
+      }
+    }
+  }, [props.curType]);
+  
   const settings = {
     useCSS: true,
     dots: true,
@@ -32,15 +43,16 @@ const Carousel = () => {
     }]
   };
   return (
-    <Slider {...settings}>
-      {DISHES.map(dish => {
+    <Slider {...settings} ref={sliderRef}>
+      {DISHES.map((dish, i) => {
         return (
-          <Dish key={dish.id}
-            id={dish.id}
-            name={dish.name}
-            description={dish.description}
-            price={dish.price}
-            path={dish.path}
+          <Dish key={i}
+              id={i}
+              name={dish.name}
+              description={dish.description}
+              price={dish.price}
+              path={dish.path}
+              type={dish.type}
           />
         );
       })}

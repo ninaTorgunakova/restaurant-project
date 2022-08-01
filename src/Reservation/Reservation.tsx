@@ -1,6 +1,7 @@
-import './Reservation.scss';
 import Modal from 'react-modal';
 import { useState } from 'react';
+
+import './Reservation.scss';
 
 Modal.setAppElement('#root');
 
@@ -59,7 +60,7 @@ const Reservation = () => {
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               style={modalStyles}
-              contentLabel='Modal'>
+              contentLabel='reservation-modal'>
             <p>Thanks for the application! Our manager will contact you shortly.</p>
             <button className='button modal' onClick={closeModal}>OK</button>
         </Modal>

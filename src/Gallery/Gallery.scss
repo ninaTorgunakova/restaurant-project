@@ -1,7 +1,6 @@
 .gallery-block {
   width: 80%;
   margin: auto;
-  z-index: -1;
   @media screen and (max-width: 650px) {
     width: 100%;
   }
@@ -9,17 +8,18 @@
 
 .swiper {
   height: 100%;
+  z-index: 0;
 }
 
 .slide-photo {
-  width: 35vw;
+  width: 45vw;
   user-select: none;
   border-radius: 5px;
   @media screen and (max-width: 1024px) {
-    width: 50vw;
+    width: 60vw;
   }
   @media screen and (max-width: 650px) {
-    width: 68vw;
+    width: 75vw;
   }
 }
 

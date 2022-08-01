@@ -13,12 +13,14 @@ li.slick-active {
   background-color: black;
 }
 
-.slick-dots li button {
-  content: '';
-  color: white;
-  opacity: 0;
-}
-
-.slick-dots ul li {
-  border: 1px solid black;
+.slick-dots {
+  position: unset !important;
+  li button {
+    content: '';
+    color: white;
+    opacity: 0;
+  }
+  ul li {
+    border: 1px solid black;
+  }
 }
