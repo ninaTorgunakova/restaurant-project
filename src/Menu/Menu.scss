@@ -12,6 +12,7 @@
     padding: 3% 0%;
     @media screen and (max-width: 700px) {
       gap: 20px;
+      padding: 5% 0%;
     }
     @media screen and (max-width: 400px) {
       gap: 15px;
@@ -19,12 +20,20 @@
     & .item {
       cursor: pointer;
       user-select: none;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: .3s ease-in-out;
+      transition: .3s ease-in-out;
+      &:hover {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
       @media screen and (max-width: 530px) {
-        width: 60px;
+        width: 66px;
         height: 66px;
       }
-      @media screen and (max-width: 400px) {
-        width: 50px;
+      @media screen and (max-width: 360px) {
+        width: 52px;
         height: 64px;
       }
     }

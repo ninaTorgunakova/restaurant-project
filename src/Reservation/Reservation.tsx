@@ -1,7 +1,8 @@
 import Modal from 'react-modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Reservation.scss';
+import { amountValidator, nameValidator, phoneValidator } from './Reservation-validators';
 
 Modal.setAppElement('#root');
 
@@ -13,6 +14,41 @@ const Reservation = () => {
     const closeModal = (): void => {
       setIsOpen(false);
     }
+    const [inputValues, setInputValue] = useState({
+      name: '',
+      phone: '',
+      amount: '',
+    });
+  
+    const [validation, setValidation] = useState({
+      name: '',
+      phone: '',
+      amount: '',
+    });
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setInputValue({ ...inputValues, [name]: value });
+    }
+
+    const checkValidation = () => {
+      let errors: {name: string, phone: string, amount: string} = validation;
+      errors.name = nameValidator(inputValues.name);
+      errors.phone = phoneValidator(inputValues.phone);
+      errors.amount = amountValidator(inputValues.amount);
+      setValidation(errors);
+    }
+
+    useEffect(() => {
+      checkValidation();
+    }, [inputValues]);
+
+    const checkAndSumbit = () => {
+      if (!nameValidator(inputValues.name) && !phoneValidator(inputValues.phone) && amountValidator(inputValues.amount)) {
+        openModal();
+      }
+    }
+    
     const modalStyles: Modal.Styles = {
       content: {
         top: '50%',
@@ -34,27 +70,42 @@ const Reservation = () => {
           <div className='form'>
               <img alt='' className='logo' src='reservation-logo.png'/>
               <div className='input-block'>
-                <input className='field'
-                    type='text'
-                    placeholder='Name'
-                    maxLength={30}/>
-                <input className='field'
-                    type='text'
-                    placeholder='Phone'
-                    pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
-                    maxLength={30}/>
-                <input className='field'
+                <div className='field'>
+                  <input className='input'
+                      type='text'
+                      placeholder='Name'
+                      name='name'
+                      onChange={(e) => handleChange(e)}
+                      value={inputValues.name}/>
+                  {validation.name && <span className='error'>{validation.name}</span>}
+                </div>
+                <div className='field'>
+                  <input className='input'
+                      type='text'
+                      placeholder='Phone'
+                      name='phone'
+                      onChange={(e) => handleChange(e)}
+                      value={inputValues.phone}/>
+                  {validation.phone && <span className='error'>{validation.phone}</span>}
+                </div>
+                <div className='field'>
+                <input className='input'
                     type='text'
                     onFocus={event => { event.preventDefault(); event.target.type='datetime-local' }} 
                     placeholder='Time preference'
                     min={new Date().toISOString().slice(0, 16)}/>
-                <input className='field'
-                    type='number'
-                    placeholder='Number of persons'
-                    max={50}
-                    min={1}/>
+                </div>
+                <div className='field'>
+                  <input className='input'
+                      type='number'
+                      name='amount'
+                      placeholder='Number of persons'
+                      onChange={(e) => handleChange(e)}
+                      value={inputValues.amount}/>
+                  {validation.amount && <span className='error'>{validation.amount}</span>}
+                </div>
               </div>
-              <input autoFocus type='submit' className='button' value='RESERVE NOW' onClick={openModal}/>
+              <button autoFocus type='submit' className='button' onClick={checkAndSumbit}>RESERVE NOW</button>
           </div>
           <Modal
               isOpen={modalIsOpen}
