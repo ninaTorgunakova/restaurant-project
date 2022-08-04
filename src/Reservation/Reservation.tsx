@@ -1,8 +1,9 @@
 import Modal from 'react-modal';
 import React, { useEffect, useState } from 'react';
+import DateTimePicker from 'react-datetime-picker';
 
 import './Reservation.scss';
-import { amountValidator, nameValidator, phoneValidator } from './Reservation-validators';
+import { amountValidator, dateValidator, nameValidator, phoneValidator } from './Reservation-validators';
 
 Modal.setAppElement('#root');
 
@@ -21,7 +22,7 @@ const Reservation = () => {
         dirty: false
       },
       date: {
-        value: '',
+        value: new Date(),
         dirty: false
       },
       amount: {
@@ -37,9 +38,16 @@ const Reservation = () => {
       date: ''
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       const updatedValues = { ...inputValues, [name]: { value, dirty: true } };
+      setInputValue(prevState => {
+        return {...prevState, ...updatedValues};
+      });
+    }
+
+    const handleChangeDate = (date: Date) => {
+      const updatedValues = { ...inputValues, date: { value: date, dirty: true } };
       setInputValue(prevState => {
         return {...prevState, ...updatedValues};
       });
@@ -53,10 +61,10 @@ const Reservation = () => {
       if (inputValues.phone.dirty) {
         errors.phone = phoneValidator(inputValues.phone.value);
       }
-      if (inputValues.amount.dirty) {
-        errors.amount = amountValidator(inputValues.amount.value);
-      }
       if (inputValues.date.dirty) {
+        errors.date = dateValidator(inputValues.date.value);
+      }
+      if (inputValues.amount.dirty) {
         errors.amount = amountValidator(inputValues.amount.value);
       }
       if (errors.name || errors.phone || errors.date ||errors.amount ||
@@ -73,10 +81,6 @@ const Reservation = () => {
     useEffect(() => {
       setValidationErrors();
     }, [inputValues]);
-
-    const submitForm = () => {
-      openModal();
-    }
     
     const modalStyles: Modal.Styles = {
       content: {
@@ -93,6 +97,12 @@ const Reservation = () => {
       },
     };
 
+    const getTomorrowDate = (): Date => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      return tomorrow;
+    }
+
     return (
       <div id='reservations' className='reservation-block'>
           <img alt='' className='photo' src='reservation-photo.png'/>
@@ -104,7 +114,7 @@ const Reservation = () => {
                       type='text'
                       placeholder='Name *'
                       name='name'
-                      onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChangeText(e)}
                       value={inputValues.name.value}/>
                   {inputValues.name.dirty && <span className='error'>{validation.name}</span>}
                 </div>
@@ -113,34 +123,35 @@ const Reservation = () => {
                       type='text'
                       placeholder='Phone *'
                       name='phone'
-                      onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChangeText(e)}
                       value={inputValues.phone.value}/>
                   {inputValues.phone.dirty && <span className='error'>{validation.phone}</span>}
                 </div>
                 <div className='field'>
-                <label>
-                  <input className='input'
-                      type='text'
-                      name='date'
-                      onChange={(e) => handleChange(e)}
-                      onFocus={event => { event.preventDefault(); event.target.type='datetime-local' }} 
-                      placeholder='Time preference *'
-                      min={new Date().toISOString().slice(0, 16)}
-                      value={inputValues.date.value}/>
-                    {inputValues.date.dirty && <span className='error'>{validation.date}</span>}
-                </label>
+                  <DateTimePicker
+                      className='input'
+                      onChange={(e) => handleChangeDate(e)}
+                      value={inputValues.date.value}
+                      minDate={getTomorrowDate()}
+                      disableClock={true}/>
+                  {inputValues.date.dirty && <span className='error'>{validation.date}</span>}
                 </div>
                 <div className='field'>
                   <input className='input'
                       type='number'
                       name='amount'
                       placeholder='Number of persons *'
-                      onChange={(e) => handleChange(e)}
+                      onChange={(e) => handleChangeText(e)}
                       value={inputValues.amount.value}/>
                   {inputValues.amount.dirty && <span className='error'>{validation.amount}</span>}
                 </div>
               </div>
-              <button disabled={isDisabledSubmit} autoFocus type='submit' className='button' onClick={submitForm}>RESERVE NOW</button>
+              <button disabled={isDisabledSubmit}
+                  autoFocus type='submit'
+                  className='button'
+                  onClick={openModal}>
+                RESERVE NOW
+              </button>
           </div>
           <Modal
               isOpen={modalIsOpen}

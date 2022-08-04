@@ -21,8 +21,8 @@ export const phoneValidator = (phone: string): string => {
   return '';
 };
 
-export const dateValidator = (date: string): string => {
-  if (date.length === 0) {
+export const dateValidator = (date: Date): string => {
+  if (!date) {
     return 'Date is required';
   }
   return '';
