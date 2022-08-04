@@ -40,7 +40,7 @@
   & .input-block {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
     margin: 2% 0%;
     & .field {
       display: flex;
@@ -88,20 +88,13 @@
   &:focus {
     box-shadow: 0 0 2px 4px #2f3546;
   }
-  &:active {
+  &:active:not([disabled]) {
     background-color: #6f7177;
     box-shadow: 0 5px #2f3546;
     transform: translateY(4px);
   }
-}
-
-.button.modal {
-  width: 250px;
-  height: 35px;
-  @media screen and (max-width: 600px) {
-    width: 150px;
-  }
-  @media screen and (max-width: 400px) {
-    width: 100px;
+  &:disabled {
+    background-color: #ccc;
+    cursor: no-drop;
   }
 }

@@ -21,7 +21,17 @@ export const phoneValidator = (phone: string): string => {
   return '';
 };
 
+export const dateValidator = (date: string): string => {
+  if (date.length === 0) {
+    return 'Date is required';
+  }
+  return '';
+};
+
 export const amountValidator = (amount: string): string => {
+  if (amount.length === 0) {
+    return 'Number of persons is required';
+  }
   if (!new RegExp(/^[1-9]\d*$/).test(amount)) {
     return 'Enter positive number, please';
   }

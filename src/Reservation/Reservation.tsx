@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Reservation.scss';
 import { amountValidator, nameValidator, phoneValidator } from './Reservation-validators';
@@ -8,45 +8,74 @@ Modal.setAppElement('#root');
 
 const Reservation = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const openModal = (): void => {
-      setIsOpen(true);
-    }
-    const closeModal = (): void => {
-      setIsOpen(false);
-    }
+    const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
+    const openModal = (): void => setIsOpen(true);
+    const closeModal = (): void => setIsOpen(false);
     const [inputValues, setInputValue] = useState({
-      name: '',
-      phone: '',
-      amount: '',
+      name: {
+        value: '',
+        dirty: false
+      },
+      phone: {
+        value: '',
+        dirty: false
+      },
+      date: {
+        value: '',
+        dirty: false
+      },
+      amount: {
+        value: '',
+        dirty: false
+      }
     });
   
     const [validation, setValidation] = useState({
       name: '',
       phone: '',
       amount: '',
+      date: ''
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
-      setInputValue({ ...inputValues, [name]: value });
+      const updatedValues = { ...inputValues, [name]: { value, dirty: true } };
+      setInputValue(prevState => {
+        return {...prevState, ...updatedValues};
+      });
     }
 
-    const checkValidation = () => {
-      let errors: {name: string, phone: string, amount: string} = validation;
-      errors.name = nameValidator(inputValues.name);
-      errors.phone = phoneValidator(inputValues.phone);
-      errors.amount = amountValidator(inputValues.amount);
-      setValidation(errors);
+    const setValidationErrors = () => {
+      let errors = validation;
+      if (inputValues.name.dirty) {
+        errors.name = nameValidator(inputValues.name.value);
+      }
+      if (inputValues.phone.dirty) {
+        errors.phone = phoneValidator(inputValues.phone.value);
+      }
+      if (inputValues.amount.dirty) {
+        errors.amount = amountValidator(inputValues.amount.value);
+      }
+      if (inputValues.date.dirty) {
+        errors.amount = amountValidator(inputValues.amount.value);
+      }
+      if (errors.name || errors.phone || errors.date ||errors.amount ||
+        !inputValues.name.dirty || !inputValues.phone.dirty || !inputValues.date.dirty || !inputValues.amount.dirty) {
+        setIsDisabledSubmit(true);
+      } else {
+        setIsDisabledSubmit(false);
+      }
+      setValidation(prevState => {
+        return {...prevState, ...errors};
+      });
     }
 
     useEffect(() => {
-      checkValidation();
+      setValidationErrors();
     }, [inputValues]);
 
-    const checkAndSumbit = () => {
-      if (!nameValidator(inputValues.name) && !phoneValidator(inputValues.phone) && amountValidator(inputValues.amount)) {
-        openModal();
-      }
+    const submitForm = () => {
+      openModal();
     }
     
     const modalStyles: Modal.Styles = {
@@ -73,39 +102,45 @@ const Reservation = () => {
                 <div className='field'>
                   <input className='input'
                       type='text'
-                      placeholder='Name'
+                      placeholder='Name *'
                       name='name'
                       onChange={(e) => handleChange(e)}
-                      value={inputValues.name}/>
-                  {validation.name && <span className='error'>{validation.name}</span>}
+                      value={inputValues.name.value}/>
+                  {inputValues.name.dirty && <span className='error'>{validation.name}</span>}
                 </div>
                 <div className='field'>
                   <input className='input'
                       type='text'
-                      placeholder='Phone'
+                      placeholder='Phone *'
                       name='phone'
                       onChange={(e) => handleChange(e)}
-                      value={inputValues.phone}/>
-                  {validation.phone && <span className='error'>{validation.phone}</span>}
+                      value={inputValues.phone.value}/>
+                  {inputValues.phone.dirty && <span className='error'>{validation.phone}</span>}
                 </div>
                 <div className='field'>
-                <input className='input'
-                    type='text'
-                    onFocus={event => { event.preventDefault(); event.target.type='datetime-local' }} 
-                    placeholder='Time preference'
-                    min={new Date().toISOString().slice(0, 16)}/>
+                <label>
+                  <input className='input'
+                      type='text'
+                      name='date'
+                      onChange={(e) => handleChange(e)}
+                      onFocus={event => { event.preventDefault(); event.target.type='datetime-local' }} 
+                      placeholder='Time preference *'
+                      min={new Date().toISOString().slice(0, 16)}
+                      value={inputValues.date.value}/>
+                    {inputValues.date.dirty && <span className='error'>{validation.date}</span>}
+                </label>
                 </div>
                 <div className='field'>
                   <input className='input'
                       type='number'
                       name='amount'
-                      placeholder='Number of persons'
+                      placeholder='Number of persons *'
                       onChange={(e) => handleChange(e)}
-                      value={inputValues.amount}/>
-                  {validation.amount && <span className='error'>{validation.amount}</span>}
+                      value={inputValues.amount.value}/>
+                  {inputValues.amount.dirty && <span className='error'>{validation.amount}</span>}
                 </div>
               </div>
-              <button autoFocus type='submit' className='button' onClick={checkAndSumbit}>RESERVE NOW</button>
+              <button disabled={isDisabledSubmit} autoFocus type='submit' className='button' onClick={submitForm}>RESERVE NOW</button>
           </div>
           <Modal
               isOpen={modalIsOpen}
