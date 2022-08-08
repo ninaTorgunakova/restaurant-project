@@ -8,6 +8,7 @@ To view landing page: https://restaurant-project-theta.vercel.app/
 
 ![Screenshot](preview-1.jpg)
 ![Screenshot](preview-2.jpg)
+![Screenshot](preview-3.jpg)
 
 ## How to start project
 
