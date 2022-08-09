@@ -9,10 +9,10 @@ const Contacts = () => {
             <span className='item'>AcropSecret@gmail.com</span>
         </div>
         <div className='links'>
-          <a href='https:/www.twitter.com' target='_blank'>
+          <a href='//www.twitter.com' target='_blank'>
             <img alt='' className='item' src='./twitter.png'/>
           </a>
-          <a href='https:/www.pinterest.com' target='_blank'>
+          <a href='//www.pinterest.com' target='_blank'>
             <img alt='' className='item' src='./pinterest.png'/>
           </a>
         </div>

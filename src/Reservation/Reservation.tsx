@@ -23,7 +23,7 @@ const Reservation = () => {
       },
       date: {
         value: new Date(),
-        dirty: false
+        dirty: true
       },
       amount: {
         value: '',
