@@ -49,9 +49,11 @@
       & .input {
         width: 300px;
         height: 2em;
+        padding: 1px 4px;
         border-radius: 5px;
         box-sizing: border-box;
         font-size: 100%;
+        border: 1px solid black;
         color: black;
         @media screen and (max-width: 600px) {
           width: 200px;
@@ -64,6 +66,15 @@
         color: red;
         @media screen and (max-width: 600px) {
           width: 200px;
+        }
+      }
+    }
+    & .field.date {
+      > .input {
+        border: 1px solid black;
+        padding: 0;
+        > div {
+          border: none;
         }
       }
     }

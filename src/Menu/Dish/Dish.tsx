@@ -1,7 +1,7 @@
 import { IDish } from './DISHES';
 import './Dish.scss';
 
-const Dish = (props: IDish) => {
+const Dish = (props: IDish): JSX.Element => {
     return (
       <div className='dish'>
           <img src={props.path} alt='' className='image'/>

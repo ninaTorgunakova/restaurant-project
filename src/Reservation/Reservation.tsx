@@ -7,11 +7,9 @@ import { amountValidator, dateValidator, nameValidator, phoneValidator } from '.
 
 Modal.setAppElement('#root');
 
-const Reservation = () => {
+const Reservation = (): JSX.Element => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
-    const openModal = (): void => setIsOpen(true);
-    const closeModal = (): void => setIsOpen(false);
     const [inputValues, setInputValue] = useState({
       name: {
         value: '',
@@ -30,7 +28,6 @@ const Reservation = () => {
         dirty: false
       }
     });
-  
     const [validation, setValidation] = useState({
       name: '',
       phone: '',
@@ -38,7 +35,14 @@ const Reservation = () => {
       date: ''
     });
 
-    const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
+    useEffect(() => {
+      setValidationErrors();
+    }, [inputValues]);
+
+    const openModal = (): void => setIsOpen(true);
+    const closeModal = (): void => setIsOpen(false);
+
+    const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>): void => {
       const { name, value } = event.target;
       const updatedValues = { ...inputValues, [name]: { value, dirty: true } };
       setInputValue(prevState => {
@@ -46,14 +50,14 @@ const Reservation = () => {
       });
     }
 
-    const handleChangeDate = (date: Date) => {
+    const handleChangeDate = (date: Date): void => {
       const updatedValues = { ...inputValues, date: { value: date, dirty: true } };
       setInputValue(prevState => {
         return {...prevState, ...updatedValues};
       });
     }
 
-    const setValidationErrors = () => {
+    const setValidationErrors = (): void => {
       let errors = validation;
       if (inputValues.name.dirty) {
         errors.name = nameValidator(inputValues.name.value);
@@ -77,10 +81,6 @@ const Reservation = () => {
         return {...prevState, ...errors};
       });
     }
-
-    useEffect(() => {
-      setValidationErrors();
-    }, [inputValues]);
     
     const modalStyles: Modal.Styles = {
       content: {
@@ -104,7 +104,7 @@ const Reservation = () => {
     }
 
     return (
-      <div id='reservations' className='reservation-block'>
+      <section id='reservations' className='reservation-block'>
           <img alt='' className='photo' src='reservation-photo.png'/>
           <div className='form'>
               <img alt='' className='logo' src='reservation-logo.png'/>
@@ -127,7 +127,7 @@ const Reservation = () => {
                       value={inputValues.phone.value}/>
                   {inputValues.phone.dirty && <span className='error'>{validation.phone}</span>}
                 </div>
-                <div className='field'>
+                <div className='field date'>
                   <DateTimePicker
                       className='input'
                       onChange={(e) => handleChangeDate(e)}
@@ -161,7 +161,7 @@ const Reservation = () => {
             <p>Thanks for the application! Our manager will contact you shortly.</p>
             <button className='button modal' onClick={closeModal}>OK</button>
         </Modal>
-      </div>
+      </section>
     );
 }
 

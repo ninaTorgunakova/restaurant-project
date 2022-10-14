@@ -6,9 +6,9 @@ import 'swiper/css/navigation';
 import './Gallery.scss';
 import { PHOTOS } from './PHOTOS';
 
-const Gallery = () => {
+const Gallery = (): JSX.Element => {
     return (
-      <div id='gallery' className='gallery-block'>
+      <section id='gallery' className='gallery-block'>
         <Swiper navigation={true} modules={[Navigation]} className='mySwiper'>
           {PHOTOS.map(photo => 
             <SwiperSlide className='slide' key={photo.id}>
@@ -16,7 +16,7 @@ const Gallery = () => {
             </SwiperSlide>
           )}
         </Swiper>
-      </div>
+      </section>
     );
 };
 

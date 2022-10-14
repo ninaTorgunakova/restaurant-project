@@ -1,12 +1,13 @@
 import { useState } from 'react';
+
 import CarouselComponent from './Carousel';
 import { DishType } from './Dish/DISHES';
 import './Menu.scss';
 
-const Menu = () => {
+const Menu = (): JSX.Element => {
   const [curType, setCurType] = useState(DishType.DESERT);
   return (
-      <div id='menu' className='menu-block'>
+      <section id='menu' className='menu-block'>
         <div className='section'>
           <img alt='' className='item' src='./deserts.png' onClick={() => setCurType(DishType.DESERT)}/>
           <img alt='' className='item' src='./soups.png' onClick={() => setCurType(DishType.SOUP)}/>
@@ -17,7 +18,7 @@ const Menu = () => {
         <div className='carousel'>
           <CarouselComponent curType={curType}/>
         </div>
-      </div>
+      </section>
   );
 }
 

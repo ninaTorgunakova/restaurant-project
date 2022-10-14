@@ -6,7 +6,7 @@ import Reservation from './Reservation/Reservation';
 import Gallery from './Gallery/Gallery';
 import Contacts from './Contacts/Contacts';
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <div className='App'>
       <Header/>
