@@ -24,15 +24,19 @@
       }
     }
   }
-  & .links {
+  .links {
     display: flex;
     gap: 40px;
     margin-top: 2%;
     @media screen and (max-width: 670px) {
       margin-top: 20px;
     }
+    & .item:active {
+      transform: translate3d(0, 0.75em, -0.75em);
+      transition: transform 1s;
+    }
   }
-  & .copyright {
+  .copyright {
     margin-top: 2%;
     margin-bottom: 2%;
     @media screen and (max-width: 670px) {
