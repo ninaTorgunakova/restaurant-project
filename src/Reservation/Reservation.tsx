@@ -105,9 +105,9 @@ const Reservation = (): JSX.Element => {
 
     return (
       <section id='reservations' className='reservation-block'>
-          <img alt='' className='photo' src='reservation-photo.png'/>
+          <img alt='' className='photo' src='reservation-photo.webp'/>
           <div className='form'>
-              <img alt='' className='logo' src='reservation-logo.png'/>
+              <img alt='' className='logo' src='reservation-logo.webp'/>
               <div className='input-block'>
                 <div className='field'>
                   <input className='input'

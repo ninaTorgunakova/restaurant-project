@@ -9,10 +9,10 @@ const Contacts = (): JSX.Element => {
           <address className='item'>AcropSecret@gmail.com</address>
       </div>
       <div className='links'>
-        <a href='//www.twitter.com' target='_blank'>
+        <a href='//www.twitter.com' aria-label='Twitter' rel='noreferrer' target='_blank'>
           <img alt='' className='item' src='./twitter.png'/>
         </a>
-        <a href='//www.pinterest.com' target='_blank'>
+        <a href='//www.pinterest.com' aria-label='Pinterest' rel='noreferrer' target='_blank'>
           <img alt='' className='item' src='./pinterest.png'/>
         </a>
       </div>

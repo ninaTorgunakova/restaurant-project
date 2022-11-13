@@ -5,27 +5,21 @@ export interface IPhoto {
 
 export const PHOTOS: IPhoto[] = [{
       id: 1,
-      path: 'Photo1.png'
+      path: 'Photo1.webp'
   }, {
       id: 2,
-      path: 'Photo2.png'
+      path: 'Photo2.webp'
   }, {
       id: 3,
-      path: 'Photo3.png'
+      path: 'Photo3.webp'
   }, {
       id: 4,
-      path: 'Photo4.png'
+      path: 'Photo4.webp'
   }, {
       id: 5,
-      path: 'Photo5.png'
+      path: 'Photo5.webp'
   }, {
       id: 6,
-      path: 'Photo6.png'
-  }, {
-      id: 7,
-      path: 'Photo7.png'
-  }, {
-      id: 8,
-      path: 'Photo8.png'
-  },
+      path: 'Photo6.webp'
+  }
 ];

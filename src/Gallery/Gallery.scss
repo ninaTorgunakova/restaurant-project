@@ -12,6 +12,8 @@
 }
 
 .slide-photo {
+  max-width: 864px;
+  max-height: 864px;
   width: 45vw;
   user-select: none;
   border-radius: 5px;
@@ -37,4 +39,8 @@
 .swiper-button-prev,
 .swiper-button-next {
   user-select: none;
+}
+
+.swiper-wrapper {
+  align-items: center;
 }
